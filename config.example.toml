@@ -1,2 +1,3 @@
 "/" = "./bin/example/echo.sh"
 "/ruby" = "./bin/example/test.rb"
+"/python" = "./bin/example/test.py"
