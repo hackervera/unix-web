@@ -7,7 +7,7 @@ config.each do |route, handler|
     get route do |env|
         error = IO::Memory.new
         output = IO::Memory.new
-        env.response.content_type = "text/plain"
+        env.response.content_type = env.params.query["FMT"]? || "text/plain"
         process = Process.run(command: handler.to_s, env: env.params.query.to_h, error: error, output: output)
         if error.to_s.empty? 
             output.to_s

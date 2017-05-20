@@ -1,0 +1,1 @@
+puts "testing crystal, FOO is #{ENV.to_a}" 

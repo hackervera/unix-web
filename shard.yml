@@ -20,3 +20,7 @@ dependencies:
   toml:
     github: manastech/crystal-toml
     branch: master
+  db:
+    github: crystal-lang/crystal-db
+  pg:
+    github: will/crystal-pg
