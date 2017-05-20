@@ -1,0 +1,22 @@
+name: speed
+version: 0.1.0
+
+authors:
+  - Tyler Gillies <tjgillies@gmail.com>
+
+targets:
+  speed:
+    main: src/speed.cr
+
+crystal: 0.22.0
+
+license: MIT
+
+
+dependencies:
+  kemal:
+    github: kemalcr/kemal
+    branch: master
+  toml:
+    github: manastech/crystal-toml
+    branch: master
