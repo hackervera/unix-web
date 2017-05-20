@@ -3,3 +3,4 @@
 /bin/
 /.shards/
 config.toml
+!/bin/*.sh
