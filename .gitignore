@@ -1,6 +1,5 @@
 /doc/
 /lib/
-/bin/*
+/bin/personal
 /.shards/
 config.toml
-!/bin/*.sh
