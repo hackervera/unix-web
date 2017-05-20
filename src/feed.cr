@@ -7,18 +7,18 @@ require "http"
 DbUrl = "postgres://127.0.0.1/feeds"
 
 Conn = begin
-    DB.open DbUrl
+  DB.open DbUrl
 rescue
-    raise "Need to create database named #{DbUrl}"
+  raise "Need to create database named #{DbUrl}"
 end
 
 # Conn = DB.open DbUrl
 
 Urls = if urls = ENV["URLS"]?
-    urls.split(",")
-else
-    [] of String
-end
+         urls.split(",")
+       else
+         [] of String
+       end
 
 # FeedUrls = [
 #   "https://www.wired.com/feed/",
@@ -41,7 +41,7 @@ begin
 
 )"
 rescue
-    #Table exists
+  # Table exists
 end
 
 Urls.map do |feed_url|
@@ -53,11 +53,11 @@ end
 Conn.query "select link,title from items order by date desc limit 50" do |rs|
   rs.each do
     if ENV["FMT"]? == "text/html"
-        puts "<div><a href=#{rs.read(String)}>#{rs.read(String)}</a></div>"
+      puts "<div><a href=#{rs.read(String)}>#{rs.read(String)}</a></div>"
     else
-        link = rs.read(String)
-        title = rs.read(String)
-        puts "#{title} #{link}"
+      link = rs.read(String)
+      title = rs.read(String)
+      puts "#{title} #{link}"
     end
   end
 end
@@ -91,7 +91,7 @@ class Feed
           Conn.exec "insert into items values ($1, $2, $3, $4)", title, link, guid, date
           item
         rescue e : PQ::PQError
-          #   STDERR.puts e.message
+          # STDERR.puts e.message
         end
       end
       return
@@ -106,10 +106,10 @@ class Feed
                        when XML::Node
                          x.content
                        when Nil
-                         #  puts node.inspect
+                         #   puts node.inspect
                          nil
                        end
-        if date_content
+        if date_content && !date_content.empty?
           date = Time.parse(date_content, "%FT%X%z")
         else
           date = Time.now
@@ -121,7 +121,7 @@ class Feed
           Conn.exec "insert into items values ($1, $2, $3, $4)", title, link, guid, date
           item
         rescue e : PQ::PQError
-          #   STDERR.puts e.message
+          #  STDERR.puts e.message
         end
       end
     end
