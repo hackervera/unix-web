@@ -5,3 +5,5 @@
 server
 echo
 config.toml
+fsql.sh
+json.sh
