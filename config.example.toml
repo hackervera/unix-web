@@ -1,2 +1,2 @@
-"/" = "./echo.sh"
+"/" = "./bin/example/echo.sh"
 "/ruby" = "./bin/example/test.rb"
