@@ -9,7 +9,12 @@ config.each do |route, handler|
         output = IO::Memory.new
         env.response.content_type = "text/plain"
         process = Process.run(command: handler.to_s, env: env.params.query.to_h, error: error, output: output)
-        error.to_s.empty? ?  output.to_s : error.to_s 
+        if error.to_s.empty? 
+            output.to_s
+        else
+            env.response.status_code = 500
+            error.to_s 
+        end
     end
 end
 
