@@ -1,4 +1,4 @@
-name: speed
+name: unix-web
 version: 0.1.0
 
 authors:
@@ -6,7 +6,7 @@ authors:
 
 targets:
   speed:
-    main: src/speed.cr
+    main: src/server.cr
 
 crystal: 0.22.0
 
